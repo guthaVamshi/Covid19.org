@@ -3,7 +3,7 @@
 
 
 // api url
-var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday,StateAbb=0,StateName; var NewCases=0; var sum = 0;var CasesTotal=0;
+var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday,StateAbb,StateName; var NewCases=0; var sum = 0;var CasesTotal=0;
 var val = new Array();
 const api_url =
 	"https://data.covid19india.org/v4/min/timeseries.min.json";
