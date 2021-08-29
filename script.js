@@ -3,11 +3,11 @@
 
 
 // api url
-var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday,StateAbb,StateName; var NewCases=0; var sum = 0;var CasesTotal=0;
+var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday; var NewCases=0; var sum = 0;var CasesTotal=0;
 var val = new Array();
 const api_url =
 	"https://data.covid19india.org/v4/min/timeseries.min.json";
-
+const State_api = "States.json"
 // Defining async function
 async function getapi(url) {
 
@@ -27,15 +27,16 @@ async function getapi(url) {
 
 
 }
-fetch("./States.json")
-	.then(response => {
-		return response.json();
-	})
-	.then(StatesData => {
+async function getRes(url){
+	res= await fetch(url);
+StatesData = await res.json();
+	
 		StateName = Object.values(StatesData);
 		StateAbb = Object.keys(StatesData);
 	
-	});
+};
+
+
 function show() {
 
 
@@ -123,7 +124,7 @@ function show() {
 
 // Calling that async function
 getapi(api_url);
-
+getRes(State_api);
 // Function to hide the loader
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
