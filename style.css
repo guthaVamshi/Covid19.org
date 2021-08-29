@@ -1,0 +1,10 @@
+body{
+    background-color: black;
+    color: white;
+}
+#Confirmed,#Active,#Recovered,#Deceased{
+    margin-top: 1.5rem;
+}
+.middle span{
+    color: blueviolet;
+}
