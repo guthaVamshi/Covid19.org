@@ -1,3 +1,6 @@
+*{
+    font-family: 'Sora', sans-serif;
+}
 body{
     background-color: black;
     color: white;
@@ -6,5 +9,33 @@ body{
     margin-top: 1.5rem;
 }
 .middle span{
-    color: blueviolet;
+       color: #4c75f2;
+}
+#NewActiveCases{
+    visibility: hidden;
+}
+#Vaccines{
+    color: #db5581;
+    padding: 1rem;
+    background: rgba(219,85,129,.12549019607843137);
+}
+.ConfirmedDiv,.ActiveDiv,.RecoveredDiv,.DeceasedDiv{
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+}
+.ActiveDiv{
+    background: rgba(66, 100, 212, 0.125);
+}
+.RecoveredDiv:hover{
+    background: rgba(40,167,69,.12549019607843137);
+
+}
+.DeceasedDiv:hover{
+    background: rgba(108,117,125,.06274509803921569);
+
+}
+.ConfirmedDiv:hover{
+    background: rgba(255,7,58,.12549019607843137);
+
 }

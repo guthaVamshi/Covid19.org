@@ -2,10 +2,14 @@
 <html lang="en">
 
 <head>
+  <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/512/2785/2785819.png" type="image/x-icon">  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@703&display=swap" rel="stylesheet">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -15,8 +19,10 @@
 <link rel="stylesheet" href="style.css">
 
 <body>
-  
-  <div class="middle text-center m-4 p-4"><h3>COVID19<span>INDIA</span></h3></div>
+
+  <div class="middle text-center m-4 p-4">
+    <h3>COVID19<span>INDIA</span></h3>
+  </div>
   <div class="container text-center mt-4 ">
     <div class="DateDiv text-secondary">
       <h3 id="DateId"></h3>
@@ -30,30 +36,37 @@
   </div>
   <div class="container d-flex justify-content-center align-items-center flex-wrap">
     <div class="Confirmed text-danger">
-      <div class="container p-4">
+      <div class="container ConfirmedDiv  p-4">
         <h3>Confirmed</h3>
+        <h5 id="NewCases">+ </h5>
         <h4 id="Confirmed"></h4>
       </div>
     </div>
     <div class="Active text-primary">
-      <div class="container p-4">
+      <div class="container ActiveDiv New p-4">
         <h3>Active</h3>
+        <h5 id="NewActiveCases">+ </h5>
         <h4 id="Active"></h4>
       </div>
     </div>
     <div class="Recovered text-success">
-      <div class="container p-4">
+      <div class="container RecoveredDiv p-4">
         <h3>Recovered</h3>
+        <h5 id="NewRecovered">+ </h5>
         <h4 id="Recovered"></h4>
 
       </div>
     </div>
     <div class="Deceased text-secondary">
-      <div class="container p-4">
+      <div class="container DeceasedDiv p-4">
         <h3>Deceased</h3>
+        <h5 id="NewDeceased">+ </h5>
         <h4 id="Deceased"></h4>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <h4 class="text-center Vaccine" id="Vaccines">Doses Administred  </h4>
   </div>
   <div class="container">
     <div class="TableHead text-center text-secondary p-4 m-4">
@@ -62,13 +75,16 @@
   </div>
   <!-- table for showing data -->
   <div class="container table-responsive">
-    <table class="table table-dark table-striped table-hover align-middle text-center " id="DataTable">
+    <table class="table table-dark text-secondary table-hover align-middle text-center " id="DataTable">
 
     </table>
   </div>
 
   <!-- Optional JavaScript; choose one of the two! -->
-
+  <footer class="py-3 my-4">
+    
+    <p class="text-center text-muted"> All Rights Reserved VamshiGutha ©2021</p>
+  </footer>
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"

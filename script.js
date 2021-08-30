@@ -3,7 +3,7 @@
 
 
 // api url
-var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday; var NewCases=0; var sum = 0;var CasesTotal=0;
+var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday,StatesData,StateName,StateAbb; var NewCases=0; var sum = 0;var CasesTotal=0;
 var val = new Array();
 const api_url =
 	"https://data.covid19india.org/v4/min/timeseries.min.json";
@@ -33,9 +33,10 @@ StatesData = await res.json();
 	
 		StateName = Object.values(StatesData);
 		StateAbb = Object.keys(StatesData);
-	
+	console.log(val);
 };
-
+getRes(State_api);
+getapi(api_url);
 
 function show() {
 
@@ -96,15 +97,16 @@ function show() {
 
 		tab += `<tr ">
 		<td>${val[i]} </td>
-		<td class="text-danger">${NewCases}</tf>
+		<td class="text-danger"><i class="fas fa-arrow-up"></i> ${NewCases}</tf>
 		<td>${CasesTotal}</td >
 		<td class="text-primary">${active}</td>
-		<td class="text-success">${Recovered}</td>
-		<td class="text-secondary">${Deceased}</td>
+		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered}</td>
+		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased}</td>
 
 	
 	  		
 	</tr > `;
+	NewCases = 0;
 
 	}
 
@@ -115,47 +117,27 @@ function show() {
 	DeceasedCases=data[Names[33]]['dates'][Yesterday]['total']['deceased'];
 	RecoveredCases = data[Names[33]]['dates'][Yesterday]['total']['recovered'];
 	ActiveCases = TotalCases - (DeceasedCases + RecoveredCases);
+	 data[Names[33]]['dates'][Yesterday]['total']['vaccinated1']
+	
 	document.getElementById('Confirmed').innerHTML=TotalCases;
 	document.getElementById('Active').innerHTML=ActiveCases;
 	document.getElementById('Recovered').innerHTML=RecoveredCases;
 	document.getElementById('Deceased').innerHTML=DeceasedCases;
 	document.getElementById('DateId').innerHTML = DateToday.toLocaleString();
+	document.getElementById('Vaccines').innerHTML +=(data[Names[33]]['dates'][Yesterday]['total']['vaccinated1'])+(data[Names[33]]['dates'][Yesterday]['total']['vaccinated2'])
+	document.getElementById('NewCases').innerHTML += (TotalCases)-(data[Names[33]]['dates'][PreYesterday]['total']['confirmed']);
+	document.getElementById('NewRecovered').innerHTML += (RecoveredCases)-(data[Names[33]]['dates'][PreYesterday]['total']['recovered']);
+	document.getElementById('NewDeceased').innerHTML += (DeceasedCases)-(data[Names[33]]['dates'][PreYesterday]['total']['deceased']);
 }
 
-// Calling that async function
-getapi(api_url);
-getRes(State_api);
-// Function to hide the loader
+
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
-// Function to define innerHTML for HTML table
 
 
 
 
-function F() {
-	fetch("https://data.covid19india.org/v4/min/timeseries.min.json")
-		.then(response => response.json())
-		.then(result => {
 
-			// var date = document.getElementById('Date').value;
-			// console.log(date);
-			// var pre  = d.setDate(d.getDate());
-			//console.log(pre.toLocaleString('fr'));
-			var d = new Date(document.getElementById('Date').value);
-			var date = document.getElementById('Date').value;
 
-			var PreDate = new Date(d.setDate(d.getDate() - 1));
-
-			var P = PreDate.getFullYear() + '-' + 0 + (PreDate.getMonth() + 1) + '-' + PreDate.getDate();
-
-			var day2 = result['AP']['dates'][date]['total']['confirmed'];
-
-			var day1 = result['AP']['dates'][P]['total']['confirmed'];
-			console.log(day2 - day1);
-		})
-		.catch(error => console.log('error', error));
-
-}
 
