@@ -23,7 +23,7 @@ async function getapi(url) {
 	if (response) {
 		hideloader();
 	}
-	show(data);
+	getRes(State_api);
 
 
 }
@@ -33,9 +33,9 @@ StatesData = await res.json();
 	
 		StateName = Object.values(StatesData);
 		StateAbb = Object.keys(StatesData);
-	console.log(val);
+	show(data);
 };
-getRes(State_api);
+
 getapi(api_url);
 
 function show() {
