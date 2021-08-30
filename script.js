@@ -38,6 +38,22 @@ StatesData = await res.json();
 getRes(State_api);
 getapi(api_url);
 
+Bind();
+function Bind() {
+	for (var j = 0; j < 38; j++) {
+
+		for (var f = 0; f < 38; f++) {
+
+			if (Names[j] == StateAbb[f]) {
+
+				val[j] = StateName[f];
+
+			}
+
+		}
+	}
+	
+}
 function show() {
 
 
@@ -81,18 +97,7 @@ function show() {
 			sum = sum + CasesTotal;
 			}
 		}
-		for (var j = 0; j < 38; j++) {
-
-			for (var f = 0; f < 38; f++) {
-
-				if (Names[j] == StateAbb[f]) {
-
-					val[j] = StateName[f];
-
-				}
-
-			}
-		}
+		
 
 
 		tab += `<tr ">
