@@ -16,16 +16,25 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+  <script src=
+  "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+      </script>
   <title>Covid-19 India OutBreak</title>
 </head>
 <link rel="stylesheet" href="style.css">
 
 <body>
+  <div class="mode">   
+    <span class="change"><i   class="fas fa-moon fa-2x"></i></span>
+</div>
+
+
 
   <div class="middle text-center m-4 p-4">
     <h3>COVID19<span>INDIA</span></h3>
   </div>
+  
+
   <div class="container text-center mt-4 ">
     <div class="DateDiv text-secondary"  data-aos="fade-up" data-aos-delay="100">
       <h3 id="DateId"></h3>
@@ -84,13 +93,13 @@
     </div>
   </div>
   <div class="container">
-    <div class="TableHead text-center text-secondary p-4 m-4">
+    <div class="TableHead text-center  p-4 m-4">
       <h1>Cases In India</h1>
     </div>
   </div>
   <!-- table for showing data -->
   <div class="container table-responsive">
-    <table class="table table-dark text-secondary table-hover align-middle text-center " id="DataTable">
+    <table class="table text-secondary table-hover align-middle text-center " id="DataTable">
 
     </table>
   </div>

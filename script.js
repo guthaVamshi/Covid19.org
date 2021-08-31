@@ -44,7 +44,7 @@ function show() {
 
 
 	let tab =
-		`<tr class="table-dark DataTable">
+		`<tr class="DataTable">
 			<th >State / UT</th>
 			<th >New Cases</th>
 			<th>Confirmed Cases</th>
@@ -145,6 +145,18 @@ function LogData() {
 	
 }
 
+$( ".change" ).on("click", function() {
+    
+	if( $( "body" ).hasClass( "dark" )) {
+		$( "body" ).removeClass( "dark" );
+	   
+		
+	} else {
+		$( "body" ).addClass( "dark" );
+	  
+	   
+	}
+});
 
 
 
