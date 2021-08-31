@@ -39,3 +39,13 @@ body{
     background: rgba(255,7,58,.12549019607843137);
 
 }
+.VaccinatedDose2{
+    color:rgb(47, 255, 158);
+    padding: 1rem;
+    background: rgba(142, 233, 142, 0.125);
+}
+.VaccinatedDose1{
+    color:rgb(0, 204, 255);
+    padding: 1rem;
+    background: rgba(140, 224, 235, 0.125);
+}

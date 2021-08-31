@@ -33,7 +33,9 @@ StatesData = await res.json();
 	
 		StateName = Object.values(StatesData);
 		StateAbb = Object.keys(StatesData);
+	
 	show(data);
+	LogData();
 };
 
 getapi(api_url);
@@ -95,13 +97,13 @@ function show() {
 		}
 
 
-		tab += `<tr ">
-		<td>${val[i]} </td>
-		<td class="text-danger"><i class="fas fa-arrow-up"></i> ${NewCases}</tf>
-		<td>${CasesTotal}</td >
-		<td class="text-primary">${active}</td>
-		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered}</td>
-		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased}</td>
+		tab += `<tr  data-aos="zoom-in">
+		<td >${val[i]} </td>
+		<td class="text-danger"><i class="fas fa-arrow-up"></i> ${NewCases.toLocaleString('en-IN')}</tf>
+		<td>${CasesTotal.toLocaleString('en-IN')}</td >
+		<td class="text-primary">${active.toLocaleString('en-IN')}</td>
+		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered.toLocaleString('en-IN')}</td>
+		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>
 
 	
 	  		
@@ -117,22 +119,29 @@ function show() {
 	DeceasedCases=data[Names[33]]['dates'][Yesterday]['total']['deceased'];
 	RecoveredCases = data[Names[33]]['dates'][Yesterday]['total']['recovered'];
 	ActiveCases = TotalCases - (DeceasedCases + RecoveredCases);
-	 data[Names[33]]['dates'][Yesterday]['total']['vaccinated1']
-	
-	document.getElementById('Confirmed').innerHTML=TotalCases;
-	document.getElementById('Active').innerHTML=ActiveCases;
-	document.getElementById('Recovered').innerHTML=RecoveredCases;
-	document.getElementById('Deceased').innerHTML=DeceasedCases;
-	document.getElementById('DateId').innerHTML = DateToday.toLocaleString();
-	document.getElementById('Vaccines').innerHTML +=(data[Names[33]]['dates'][Yesterday]['total']['vaccinated1'])+(data[Names[33]]['dates'][Yesterday]['total']['vaccinated2'])
-	document.getElementById('NewCases').innerHTML += (TotalCases)-(data[Names[33]]['dates'][PreYesterday]['total']['confirmed']);
-	document.getElementById('NewRecovered').innerHTML += (RecoveredCases)-(data[Names[33]]['dates'][PreYesterday]['total']['recovered']);
-	document.getElementById('NewDeceased').innerHTML += (DeceasedCases)-(data[Names[33]]['dates'][PreYesterday]['total']['deceased']);
+	vaccinated1 =  data[Names[33]]['dates'][Yesterday]['total']['vaccinated1'];
+	vaccinated2  = data[Names[33]]['dates'][Yesterday]['total']['vaccinated2'];
+	TotalVaccines = vaccinated1+vaccinated2;
+	document.getElementById('Confirmed').innerHTML=TotalCases.toLocaleString('en-IN');
+	document.getElementById('Active').innerHTML=ActiveCases.toLocaleString('en-IN');
+	document.getElementById('Recovered').innerHTML=RecoveredCases.toLocaleString('en-IN');
+	document.getElementById('Deceased').innerHTML=DeceasedCases.toLocaleString('en-IN');
+	document.getElementById('DateId').innerHTML = DateToday.toLocaleString('en-IN');
+	document.getElementById('Vaccines').innerHTML +=TotalVaccines.toLocaleString('en-IN');
+	document.getElementById('NewCases').innerHTML += ((TotalCases)-(data[Names[33]]['dates'][PreYesterday]['total']['confirmed'])).toLocaleString('en-IN');
+	document.getElementById('NewRecovered').innerHTML += ((RecoveredCases)-(data[Names[33]]['dates'][PreYesterday]['total']['recovered'])).toLocaleString('en-IN');
+	document.getElementById('NewDeceased').innerHTML += ((DeceasedCases)-(data[Names[33]]['dates'][PreYesterday]['total']['deceased'])).toLocaleString('en-IN');
+	document.getElementById('VaccinatedDose1').innerHTML += vaccinated1.toLocaleString('en-IN');
+	document.getElementById('VaccinatedDose2').innerHTML += vaccinated2.toLocaleString('en-IN');
 }
 
 
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
+}
+
+function LogData() {
+	
 }
 
 
