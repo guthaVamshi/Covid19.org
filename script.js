@@ -95,9 +95,10 @@ function show() {
 
 			}
 		}
-
+		
 
 		tab += `<tr  data-aos="zoom-in">
+		
 		<td >${val[i]} </td>
 		<td class="text-danger"><i class="fas fa-arrow-up"></i> ${NewCases.toLocaleString('en-IN')}</tf>
 		<td>${CasesTotal.toLocaleString('en-IN')}</td >

@@ -49,3 +49,9 @@ body{
     padding: 1rem;
     background: rgba(140, 224, 235, 0.125);
 }
+@media (max-width: 576px){
+    .vaccine {
+        flex-direction: column;
+    }
+}
+
