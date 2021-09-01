@@ -35,7 +35,7 @@ async function getRes(url) {
 	StateAbb = Object.keys(StatesData);
 
 	show(data);
-	LogData();
+	
 };
 
 getapi(api_url);
@@ -71,7 +71,7 @@ function show() {
 			active = CasesTotal - (Deceased + Recovered);
 			
 			NewCases = ((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (data[Names[i]]['dates'][PreYesterday]['total']['confirmed']));
-			console.log(NewCases);
+			
 			sum = sum + CasesTotal;
 		} 
 
@@ -116,7 +116,7 @@ function show() {
 	vaccinated1 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated1'];
 
 	vaccinated2 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated2'];
-	console.log(vaccinated2);
+	
 	TotalVaccines = vaccinated1 + vaccinated2;
 	document.getElementById('Confirmed').innerHTML = TotalCases.toLocaleString('en-IN');
 	document.getElementById('Active').innerHTML = ActiveCases.toLocaleString('en-IN');
