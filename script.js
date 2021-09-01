@@ -13,19 +13,13 @@ async function getapi(url) {
 
 	// Storing response
 	const response = await fetch(url);
-
 	// Storing data in form of JSON
 	data = await response.json();
-
 	Names = Object.keys(data);
-
-
 	if (response) {
 		hideloader();
 	}
 	getRes(State_api);
-
-
 }
 async function getRes(url) {
 	res = await fetch(url);
@@ -33,16 +27,12 @@ async function getRes(url) {
 
 	StateName = Object.values(StatesData);
 	StateAbb = Object.keys(StatesData);
-
 	show(data);
-	
 };
 
 getapi(api_url);
 
 function show() {
-
-
 	let tab =
 		`<tr class="DataTable">
 			<th >State / UT</th>
@@ -58,38 +48,24 @@ function show() {
 		DateToday = new Date();
 		PreYesterday = Object.keys(data[Names[i]]['dates'])[Object.keys(data[Names[i]]['dates']).length - 2];
 		DayBackYesterday = Object.keys(data[Names[i]]['dates'])[Object.keys(data[Names[i]]['dates']).length - 1];
-
 		if (data[Names[i]]['dates'][DayBackYesterday]) {
 			if (i == 34 || i ==33) {
 				continue;
-
 			}
 			CasesTotal = data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed'];
 			Deceased = data[Names[i]]['dates'][DayBackYesterday]['total']['deceased'];
 			Recovered = data[Names[i]]['dates'][DayBackYesterday]['total']['recovered'];
-			console.log((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']));
-			active = CasesTotal - (Deceased + Recovered);
-			
-			NewCases = ((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (data[Names[i]]['dates'][PreYesterday]['total']['confirmed']));
-			
+			active = CasesTotal - (Deceased + Recovered);			
+			NewCases = ((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (data[Names[i]]['dates'][PreYesterday]['total']['confirmed']));			
 			sum = sum + CasesTotal;
 		} 
-
-
 		for (var j = 0; j < 38; j++) {
-
 			for (var f = 0; f < 38; f++) {
-
 				if (Names[j] == StateAbb[f]) {
-
 					val[j] = StateName[f];
-
 				}
-
 			}
 		}
-
-
 		tab += `<tr>
 		
 		<td >${val[i]} </td>
@@ -97,10 +73,7 @@ function show() {
 		<td>${CasesTotal.toLocaleString('en-IN')}</td >
 		<td class="text-primary">${active.toLocaleString('en-IN')}</td>
 		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered.toLocaleString('en-IN')}</td>
-		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>
-
-	
-	  		
+		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>	
 	</tr > `;
 		NewCases = 0;
 
@@ -114,9 +87,7 @@ function show() {
 	RecoveredCases = data[Names[33]]['dates'][DayBackYesterday]['total']['recovered'];
 	ActiveCases = TotalCases - (DeceasedCases + RecoveredCases);
 	vaccinated1 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated1'];
-
 	vaccinated2 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated2'];
-	
 	TotalVaccines = vaccinated1 + vaccinated2;
 	document.getElementById('Confirmed').innerHTML = TotalCases.toLocaleString('en-IN');
 	document.getElementById('Active').innerHTML = ActiveCases.toLocaleString('en-IN');
