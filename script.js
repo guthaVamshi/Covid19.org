@@ -3,7 +3,7 @@
 
 
 // api url
-var Names, data,DateToday,Yesterday,PreYesterday,DayBackYesterday,StatesData,StateName,StateAbb; var NewCases=0; var sum = 0;var CasesTotal=0;
+var Names, data, DateToday, PreYesterday, DayBackYesterday, StatesData, StateName, StateAbb; var NewCases = 0; var sum = 0; var CasesTotal = 0;
 var val = new Array();
 const api_url =
 	"https://data.covid19india.org/v4/min/timeseries.min.json";
@@ -16,7 +16,7 @@ async function getapi(url) {
 
 	// Storing data in form of JSON
 	data = await response.json();
-	
+
 	Names = Object.keys(data);
 
 
@@ -27,13 +27,13 @@ async function getapi(url) {
 
 
 }
-async function getRes(url){
-	res= await fetch(url);
-StatesData = await res.json();
-	
-		StateName = Object.values(StatesData);
-		StateAbb = Object.keys(StatesData);
-	
+async function getRes(url) {
+	res = await fetch(url);
+	StatesData = await res.json();
+
+	StateName = Object.values(StatesData);
+	StateAbb = Object.keys(StatesData);
+
 	show(data);
 	LogData();
 };
@@ -55,34 +55,27 @@ function show() {
 
 	// Loop to access all rows
 	for (let i = 0; i < 38; i++) {
-		 DateToday = new Date();
-		 Yesterday = DateToday.getFullYear() + '-' + 0 + (DateToday.getMonth() + 1) + '-' + (DateToday.getDate() - 1);
-		 PreYesterday = DateToday.getFullYear() + '-' + 0 + (DateToday.getMonth() + 1) + '-' + (DateToday.getDate() - 2);
-		 DayBackYesterday = Object.keys(data[Names[i]]['dates'])[Object.keys(data[Names[i]]['dates']).length - 1];
-		
-		if (data[Names[i]]['dates'][Yesterday]) {
-			CasesTotal = data[Names[i]]['dates'][Yesterday]['total']['confirmed'];
-			Deceased = data[Names[i]]['dates'][Yesterday]['total']['deceased'];
-			Recovered = data[Names[i]]['dates'][Yesterday]['total']['recovered'];
+		DateToday = new Date();
+		PreYesterday = Object.keys(data[Names[i]]['dates'])[Object.keys(data[Names[i]]['dates']).length - 2];
+		DayBackYesterday = Object.keys(data[Names[i]]['dates'])[Object.keys(data[Names[i]]['dates']).length - 1];
 
-			active = CasesTotal - (Deceased + Recovered);
-			NewCases = (data[Names[i]]['dates'][Yesterday]['total']['confirmed'])-(data[Names[i]]['dates'][PreYesterday]['total']['confirmed']);
-			
-			sum = sum + CasesTotal;
-		} else {
-			if (i == 34 ) {
+		if (data[Names[i]]['dates'][DayBackYesterday]) {
+			if (i == 34 || i ==33) {
 				continue;
-				
-			}
-			else {
 
+			}
 			CasesTotal = data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed'];
 			Deceased = data[Names[i]]['dates'][DayBackYesterday]['total']['deceased'];
 			Recovered = data[Names[i]]['dates'][DayBackYesterday]['total']['recovered'];
+			console.log((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']));
 			active = CasesTotal - (Deceased + Recovered);
+			
+			NewCases = ((data[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (data[Names[i]]['dates'][PreYesterday]['total']['confirmed']));
+			console.log(NewCases);
 			sum = sum + CasesTotal;
-			}
-		}
+		} 
+
+
 		for (var j = 0; j < 38; j++) {
 
 			for (var f = 0; f < 38; f++) {
@@ -95,7 +88,7 @@ function show() {
 
 			}
 		}
-		
+
 
 		tab += `<tr>
 		
@@ -109,29 +102,31 @@ function show() {
 	
 	  		
 	</tr > `;
-	NewCases = 0;
+		NewCases = 0;
 
 	}
 
 	// Setting innerHTML as tab variable
 	document.getElementById("DataTable").innerHTML = tab;
 
-	TotalCases = data[Names[33]]['dates'][Yesterday]['total']['confirmed'];
-	DeceasedCases=data[Names[33]]['dates'][Yesterday]['total']['deceased'];
-	RecoveredCases = data[Names[33]]['dates'][Yesterday]['total']['recovered'];
+	TotalCases = data[Names[33]]['dates'][DayBackYesterday]['total']['confirmed'];
+	DeceasedCases = data[Names[33]]['dates'][DayBackYesterday]['total']['deceased'];
+	RecoveredCases = data[Names[33]]['dates'][DayBackYesterday]['total']['recovered'];
 	ActiveCases = TotalCases - (DeceasedCases + RecoveredCases);
-	vaccinated1 =  data[Names[33]]['dates'][Yesterday]['total']['vaccinated1'];
-	vaccinated2  = data[Names[33]]['dates'][Yesterday]['total']['vaccinated2'];
-	TotalVaccines = vaccinated1+vaccinated2;
-	document.getElementById('Confirmed').innerHTML=TotalCases.toLocaleString('en-IN');
-	document.getElementById('Active').innerHTML=ActiveCases.toLocaleString('en-IN');
-	document.getElementById('Recovered').innerHTML=RecoveredCases.toLocaleString('en-IN');
-	document.getElementById('Deceased').innerHTML=DeceasedCases.toLocaleString('en-IN');
+	vaccinated1 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated1'];
+
+	vaccinated2 = data[Names[33]]['dates'][DayBackYesterday]['total']['vaccinated2'];
+	console.log(vaccinated2);
+	TotalVaccines = vaccinated1 + vaccinated2;
+	document.getElementById('Confirmed').innerHTML = TotalCases.toLocaleString('en-IN');
+	document.getElementById('Active').innerHTML = ActiveCases.toLocaleString('en-IN');
+	document.getElementById('Recovered').innerHTML = RecoveredCases.toLocaleString('en-IN');
+	document.getElementById('Deceased').innerHTML = DeceasedCases.toLocaleString('en-IN');
 	document.getElementById('DateId').innerHTML = DateToday.toLocaleString('en-IN');
-	document.getElementById('Vaccines').innerHTML +=TotalVaccines.toLocaleString('en-IN');
-	document.getElementById('NewCases').innerHTML += ((TotalCases)-(data[Names[33]]['dates'][PreYesterday]['total']['confirmed'])).toLocaleString('en-IN');
-	document.getElementById('NewRecovered').innerHTML += ((RecoveredCases)-(data[Names[33]]['dates'][PreYesterday]['total']['recovered'])).toLocaleString('en-IN');
-	document.getElementById('NewDeceased').innerHTML += ((DeceasedCases)-(data[Names[33]]['dates'][PreYesterday]['total']['deceased'])).toLocaleString('en-IN');
+	document.getElementById('Vaccines').innerHTML += TotalVaccines.toLocaleString('en-IN');
+	document.getElementById('NewCases').innerHTML += ((TotalCases) - (data[Names[33]]['dates'][PreYesterday]['total']['confirmed'])).toLocaleString('en-IN');
+	document.getElementById('NewRecovered').innerHTML += ((RecoveredCases) - (data[Names[33]]['dates'][PreYesterday]['total']['recovered'])).toLocaleString('en-IN');
+	document.getElementById('NewDeceased').innerHTML += ((DeceasedCases) - (data[Names[33]]['dates'][PreYesterday]['total']['deceased'])).toLocaleString('en-IN');
 	document.getElementById('VaccinatedDose1').innerHTML += vaccinated1.toLocaleString('en-IN');
 	document.getElementById('VaccinatedDose2').innerHTML += vaccinated2.toLocaleString('en-IN');
 }
@@ -142,19 +137,19 @@ function hideloader() {
 }
 
 function LogData() {
-	
+
 }
 
-$( ".change" ).on("click", function() {
-    
-	if( $( "body" ).hasClass( "dark" )) {
-		$( "body" ).removeClass( "dark" );
-	   
-		
+$(".change").on("click", function () {
+
+	if ($("body").hasClass("dark")) {
+		$("body").removeClass("dark");
+
+
 	} else {
-		$( "body" ).addClass( "dark" );
-	  
-	   
+		$("body").addClass("dark");
+
+
 	}
 });
 
