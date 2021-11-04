@@ -8,7 +8,7 @@ var val = new Array();
 
 const api_url =
 	"https://data.incovid19.org/v4/min/timeseries.min.json";
-const State_api = "States.json"
+const State_api = "States.json";
 // Defining async function
 async function getapi(url) {
 
