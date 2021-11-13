@@ -20,9 +20,7 @@ async function getapi(url) {
 	Names = Object.keys(CasesJson);
 
 
-	if (response) {
-		hideloader();
-	}
+	
 	getRes(State_api);
 
 
@@ -75,6 +73,7 @@ function show() {
 			<th>Active Cases</th>
 			<th>Recovered</th>
 			<th>Deceased</th>
+			<th>Total Vaccinated</th>
 			</tr>`;
 
 	// Loop to access all rows
@@ -91,7 +90,7 @@ function show() {
 			CasesTotal = CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['confirmed'];
 			Deceased = CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['deceased'];
 			Recovered = CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['recovered'];
-			
+			Vaccinated =  CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['vaccinated1']+(CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['vaccinated2']);
 			active = CasesTotal - (Deceased + Recovered);
 			
 			NewCases = ((CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (CasesJson[Names[i]]['dates'][PreYesterday]['total']['confirmed']));
@@ -122,7 +121,7 @@ function show() {
 		<td class="text-primary">${active.toLocaleString('en-IN')}</td>
 		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered.toLocaleString('en-IN')}</td>
 		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>
-
+		<td class="text-warning"><i class="fas fa-arrow-up"></i>${Vaccinated.toLocaleString('en-In')}</td>
 	
 	  		
 	</tr > `;
@@ -164,15 +163,15 @@ function DomUpdate(){
 	document.getElementById('VaccinatedDose2').innerHTML += vaccinated2.toLocaleString('en-IN');
 	document.getElementById('PercentageOfPartiallyVaccinated').innerHTML += PartiallyVaccinatedPercentage.toFixed(2)+'%';
 	document.getElementById('PercentageOfFullyVaccinated').innerHTML += FullyVaccinatedPercentage.toFixed(2)+'%';
-
+hideloader();
 };
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
+	
 }
 
-function LogData() {
 
-}
+
 
 $(".change").on("click", function () {
 
