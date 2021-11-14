@@ -167,7 +167,7 @@ hideloader();
 };
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
-	
+	document.getElementById('Loadercontainer').style.display='none';
 }
 
 

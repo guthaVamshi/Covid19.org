@@ -22,7 +22,15 @@
   <title>Covid-19 India OutBreak</title>
 </head>
 <link rel="stylesheet" href="style.css">
-
+<div class="Loadercontainer" id="Loadercontainer">
+  <div class="loader">
+    <span style="--i:0;"></span>
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+    <span style="--i:4;"></span>
+  </div>
+</div>
 <body>
   <div class="mode">   
     <span class="change"><i   class="fas fa-moon fa-2x"></i></span>
@@ -42,7 +50,7 @@
     </div>
   </div>
   <div class="container text-center mt-4 ">
-    <div class="DateDiv text-secondary"  data-aos="fade-up" data-aos-delay="100">
+    <div class="DateDiv text-secondary">
       <h3 id="DateId"></h3>
     </div>
   </div>
@@ -53,21 +61,21 @@
     </div>
   </div>
   <div class="container d-flex justify-content-center align-items-center flex-wrap mt-4">
-    <div class="Confirmed text-danger " data-aos="fade-up">
+    <div class="Confirmed text-danger " >
       <div class="container ConfirmedDiv  p-4">
         <h3>Confirmed</h3>
         <h5 id="NewCases">+ </h5>
         <h4 id="Confirmed"></h4>
       </div>
     </div>
-    <div class="Active text-primary " data-aos="fade-up" >
+    <div class="Active text-primary "  >
       <div class="container ActiveDiv New p-4">
         <h3>Active </h3>
         <h5 id="NewActiveCases">+ </h5>
         <h4 id="Active"></h4>
       </div>
     </div>
-    <div class="Recovered text-success " data-aos="fade-up" >
+    <div class="Recovered text-success "  >
       <div class="container RecoveredDiv p-4">
         <h3>Recovered</h3>
         <h5 id="NewRecovered">+ </h5>
@@ -75,7 +83,7 @@
 
       </div>
     </div>
-    <div class="Deceased text-secondary " data-aos="fade-up" >
+    <div class="Deceased text-secondary "  >
       <div class="container DeceasedDiv p-4">
         <h3>Deceased</h3>
         <h5 id="NewDeceased">+ </h5>
@@ -83,17 +91,17 @@
       </div>
     </div>
   </div>
-  <div class="container"  data-aos="fade-up" >
+  <div class="container"   >
     <h4 class="text-center Vaccine" id="Vaccines">Total Doses Administred </h4>
   </div>
   <div class="container vaccine d-flex justify-content-center align-items-center">
-    <div class="VaccinatedDose1 m-4"  data-aos="fade-up" data-aos-delay="200">
+    <div class="VaccinatedDose1 m-4"  >
       <div class="container  p-4">
         <h4 id="VaccinatedDose1">Partially Vaccinated: </h4>
         <h6 id="PercentageOfPartiallyVaccinated">Percentage Of PartiallyVaccinated : </h6>
       </div>
     </div>
-    <div class="VaccinatedDose2 m-4"  data-aos="fade-up" data-aos-delay="200">
+    <div class="VaccinatedDose2 m-4"  >
       <div class="container  p-4">
         <h4 id="VaccinatedDose2">Fully  Vaccinated : </h4>
         <h6 id="PercentageOfFullyVaccinated">Percentage Of FullyVaccinated : </h6>
@@ -144,15 +152,8 @@
 
 
 </body>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-  }
-  </script>
+
+
   
  
   
