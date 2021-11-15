@@ -102,7 +102,7 @@ body{
 }
 .loader:before, .loader:after{
     content: '';
-    border: 1em solid #000000;
+    border: 1em solid #1b0101;
     border-radius: 50%;
     width: inherit;
     height: inherit;
