@@ -68,7 +68,7 @@ function show() {
 	let tab =
 		`<tr class="DataTable">
 			<th >State / UT</th>
-			<th >New Cases</th>
+			
 			<th>Confirmed Cases</th>
 			<th>Active Cases</th>
 			<th>Recovered</th>
@@ -116,8 +116,8 @@ function show() {
 		tab += `<tr>
 		
 		<td >${val[i]} </td>
-		<td class="text-danger"><i class="fas fa-arrow-up"></i> ${NewCases.toLocaleString('en-IN')}</tf>
-		<td>${CasesTotal.toLocaleString('en-IN')}</td >
+		<td><div class="container text-danger"><i class="fas fa-arrow-up"></i> ${NewCases.toLocaleString('en-IN')}</div>
+		<div class="container">${CasesTotal.toLocaleString('en-IN')}</div></td >
 		<td class="text-primary">${active.toLocaleString('en-IN')}</td>
 		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered.toLocaleString('en-IN')}</td>
 		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>
