@@ -1,9 +1,5 @@
 
-
-
-
-// api url
-var Names, CasesJson, DateToday, PreYesterday, DayBackYesterday,PartiallyVaccinatedPercentage, population,StatesData, StateName, StateAbb; var NewCases = 0; var sum = 0; var CasesTotal = 0;
+var Names, CasesJson, DateToday, PreYesterday, DayBackYesterday,PartiallyVaccinatedPercentage, population,StatesData, StateName, StateAbb; var NewCases = 0; var sum = 0; var CasesTotal = 0;var NewVaccinated = 0;
 var val = new Array();
 const api_url =
 	"https://data.incovid19.org/v4/min/timeseries.min.json";
@@ -73,10 +69,10 @@ function show() {
 			<th>Active Cases</th>
 			<th>Recovered</th>
 			<th>Deceased</th>
-			<th>Total Vaccinated</th>
+			<th>Vaccine Doses Administered</th>
 			</tr>`;
 
-	// Loop to access all rows
+
 	for (let i = 0; i < 38; i++) {
 		DateToday = new Date();
 		PreYesterday = Object.keys(CasesJson[Names[i]]['dates'])[Object.keys(CasesJson[Names[i]]['dates']).length - 2];
@@ -94,7 +90,7 @@ function show() {
 			active = CasesTotal - (Deceased + Recovered);
 			
 			NewCases = ((CasesJson[Names[i]]['dates'][DayBackYesterday]['total']['confirmed']) - (CasesJson[Names[i]]['dates'][PreYesterday]['total']['confirmed']));
-		
+		NewVaccinated = ((CasesJson[Names[i]]['dates'][DayBackYesterday]['delta']['vaccinated1']) + (CasesJson[Names[i]]['dates'][DayBackYesterday]['delta']['vaccinated2']))
 		
 		} 
 
@@ -121,7 +117,8 @@ function show() {
 		<td class="text-primary">${active.toLocaleString('en-IN')}</td>
 		<td class="text-success"><i class="fas fa-arrow-up"></i> ${Recovered.toLocaleString('en-IN')}</td>
 		<td class="text-secondary"><i class="fas fa-arrow-up"></i> ${Deceased.toLocaleString('en-IN')}</td>
-		<td class="text-warning"><i class="fas fa-arrow-up"></i>${Vaccinated.toLocaleString('en-In')}</td>
+		<td <div class="orange" ><i class="fas fa-arrow-up"></i> ${NewVaccinated.toLocaleString('en-IN')}
+		<div class="text-secondary">${Vaccinated.toLocaleString('en-In')}</div></td>
 	
 	  		
 	</tr > `;
